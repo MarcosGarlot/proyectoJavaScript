@@ -1,10 +1,7 @@
-let entradaNombre = prompt ("Ingresar nombre");
-let entradaApellido = prompt ("Ingresar apellido");
-let entradaEdad= prompt("Ingresar edad");
+let entrada=prompt("¿Cuál es el cuadrado de ...");
+while(entrada=parseInt(entrada)){
+    alert(entrada+" al cuadrado es "+parseInt(entrada)*parseInt(entrada));
+    entrada =prompt("¿Cuál es el cuadrado de ...")
+}
+    alert("No ha ingresado un número")
 
-if (((entradaNombre!="")&&(entradaNombre!=parseInt(entradaNombre)))&&((entradaApellido!="")&&(entradaApellido!=parseInt(entradaApellido)))&&((entradaEdad!="")&&(entradaEdad==parseInt(entradaEdad)))){
-    alert("Nombre: "+entradaNombre+"\nApellido: "+entradaApellido+"\nEdad: "+entradaEdad)
-}
-else{
-    alert("Un dato no ha sido ingresado correctamente")
-}
