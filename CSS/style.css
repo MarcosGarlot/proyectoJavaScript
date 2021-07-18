@@ -1,3 +1,4 @@
+
 *{
     margin: 0px;
     overflow-x: hidden;
@@ -43,8 +44,8 @@ nav{
     cursor: pointer;
 }
 .nav_list li a:hover,.nav_list li a.activo{
-    border-top: solid rgb(185, 101, 22);
-    border-bottom: solid rgb(185, 101, 22);
+    border-top: solid rgb(208, 112, 27);
+    border-bottom: solid rgb(208, 112, 27);
     padding: 5px 10px;
 }   
 .hamburger{
@@ -57,6 +58,13 @@ nav{
 }
 .hamburger:focus{
     outline: none;
+}
+.cart{
+    background-color: transparent;
+    border: 0;
+    color: #fff;
+    font-size: 50px;
+    cursor: pointer;
 }
 .parallax{
     display: flex;
@@ -81,8 +89,10 @@ nav{
     font-size: 135px;
 }
 .parallax_txt p {
+    position: relative;
+    left: 8px;
+    bottom: 15px;
     font-size: 25px;
-    margin: -20px 10px 20px;
 }
 .button_pedidos{
     font-size: 20px;
@@ -90,15 +100,16 @@ nav{
     border: solid;
     border-color: #ffffff;
     color: #ffffff;
+    margin: 5px;
     padding: 15px 50px;
     border-radius: 5px;
     font-family: 'Fjalla One', sans-serif;
     transition: 600ms;
 }
 .button_pedidos:hover{
-    background-color: rgb(185, 101, 22);
+    background-color: rgb(208, 112, 27);
     color:#000;
-    border: solid rgb(185, 101, 22);
+    border: solid rgb(208, 112, 27);
 }
 .parallax_image{
     position: absolute;
@@ -122,7 +133,7 @@ nav{
 .info{
     border-left: 1px solid grey;
     padding-left: 30px ;
-    margin-left: 30px;
+    margin-left: 10px;
 }
 .info p {
     margin: 0px;
