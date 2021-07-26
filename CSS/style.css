@@ -137,7 +137,7 @@ nav{
     background: linear-gradient(to bottom,#0D0D0D,#0D0D0D 20%,#D9BA5F);
 }
 /*promo section*/
-.promos{
+#promociones{
     position:relative;
     width: 1150px;
     padding:20px;
@@ -146,7 +146,7 @@ nav{
     align-items: center;
     flex-wrap: wrap;
 }
-.promos .card{
+#promociones .card{
     position: relative;
     width: 300px;
     height: 420px;
@@ -157,17 +157,17 @@ nav{
     box-shadow: 0 15px 25px rgba(0,0,0,0.2);
     transition: 0.5s;
 }
-.promos:hover .card{
+#promociones:hover .card{
     filter:blur(20px);
     transform:scale(0.9);
     opacity: 0.5;
 }
-.promos .card:hover{
+#promociones .card:hover{
     filter:blur(0px);
     transform:scale(1.1);
     opacity: 1;
 }
-.promos .card .circulo_card{
+#promociones .card .circulo_card{
     position: relative;
     width: 100%;
     height:100%;
@@ -175,27 +175,27 @@ nav{
     clip-path: circle(180px at center 0);
     text-align: center;
 }
-.promos .card .circulo_card h3{
+#promociones .card .circulo_card h3{
     color: #ffffff;
     font-size: 4.5em;
     padding: 30px 0;
 }
-.promos .card .contenido_card{
+#promociones .card .contenido_card{
     position: absolute;
     bottom: 10px;
     padding-bottom: 20px;
     text-align: center;
 }
-.promos .card .contenido_card img{
+#promociones .card .contenido_card img{
     position: relative;
     top: 30px;
     left: 15px;
     width: 100%;
 }
-.promos .card .contenido_card p{
+#promociones .card .contenido_card p{
     color: rgb(139, 139, 139);
 }
-.promos .card .contenido_card a{
+#promociones .card .contenido_card a{
     position: relative;
     display: inline-block;
     padding: 10px 20px;
@@ -205,13 +205,13 @@ nav{
     text-decoration: none;
     margin-top: 20px;
 }
-.promos .card:nth-child(1) .circulo_card,.promos .card:nth-child(1) .contenido_card a{
+#promociones .card:nth-child(1) .circulo_card,#promociones .card:nth-child(1) .contenido_card a{
     background: #A68C5B;
 }
-.promos .card:nth-child(2) .circulo_card,.promos .card:nth-child(2) .contenido_card a{
+#promociones .card:nth-child(2) .circulo_card,#promociones .card:nth-child(2) .contenido_card a{
     background: #D9843B;
 }
-.promos .card:nth-child(3) .circulo_card,.promos .card:nth-child(3) .contenido_card a{
+#promociones .card:nth-child(3) .circulo_card,#promociones .card:nth-child(3) .contenido_card a{
     background: #400601;
 }
 /* footer */
