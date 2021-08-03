@@ -5,18 +5,43 @@
 .Burger-King-/-Moldy-Whopper-/-Integrated-4-hex { color: #400601; }
 .Burger-King-/-Moldy-Whopper-/-Integrated-5-hex { color: #0D0D0D; }
 
+
 *{
     margin: 0px;
     padding: 0px;
     overflow-x: hidden;
     text-decoration: NONE;
-    font-family: 'Neuton', serif;
     box-sizing: border-box;
-
+    text-overflow: clip;
 }
 body{
     background-color: #0D0D0D;
 }
+.titulos_txt{
+    font-family: 'Fjalla One', sans-serif;
+    color: #ffffff;
+}
+.textos_txt{
+    font-family: 'Neuton', serif;
+    font-size: 21px;
+    color: #ffffff;
+}
+.boton_para_carrito{
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #000;
+    color: #ffffff;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: all 0.5s;
+}
+.boton_para_carrito:hover{
+    transform:scale(1.1);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+}
+/* Navbar */
 .logo{
     height: 50px;
     filter: invert(1);
@@ -26,7 +51,7 @@ body{
     transition: all 0.5s;
 }
 .logo:hover{
-    filter: invert(1) drop-shadow(0px 0px 20px #fff);
+    filter: invert(0) drop-shadow(0px 0px 20px #fff);
 }
 nav{
     display: flex;
@@ -43,7 +68,6 @@ nav{
 }
 .nav_list li a {
     display: inline-block;
-    color: #fff;
     font-size: 20px;
     font-weight: bolder;
     padding: 10px;
@@ -51,6 +75,7 @@ nav{
     text-decoration: none;
     transition: all 150ms;
     cursor: pointer;
+    color: #ffffff;
 }
 .nav_list li a:hover,.nav_list li a.activo{
     border-top: solid #D9843B;
@@ -86,18 +111,14 @@ nav{
     height: 100vh;
 }
 .parallax_txt{
-    color: #fff;
     position: relative;
     font-size: 50px;
     overflow:hidden;
     height: 400px;
     margin:0px 50px;
 }
-.parallax_txt h1{
-    font-family: 'Fjalla One', sans-serif;
-}
+
 .parallax_txt span{
-    font-family: 'Fjalla One', sans-serif;
     font-size: 135px;
 }
 .parallax_txt p {
@@ -106,19 +127,17 @@ nav{
     bottom: 15px;
     font-size: 25px;
 }
-.button_pedidos{
+.boton_pedidos{
     font-size: 20px;
     background-color: #0D0D0D;
     border: solid;
     border-color: #fff;
-    color: #fff;
     margin: 5px;
     padding: 15px 50px;
     border-radius: 5px;
-    font-family: 'Fjalla One', sans-serif;
     transition: 600ms;
 }
-.button_pedidos:hover{
+.boton_pedidos:hover{
     background-color: #D9843B;
     color:#0D0D0D;
     border: solid #D9843B;
@@ -130,16 +149,20 @@ nav{
 }
 /*Contenido*/
 .contenido{
-    display: flex;
+    display:flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(to bottom,#0D0D0D,#0D0D0D 20%,#D9BA5F);
+    margin: 150px 0px 0px;
+    background: linear-gradient(to bottom,#0D0D0D,#0D0D0D 20%,#A68C5B);
+}
+.secciones_txt{
+    font-size: 100px;
 }
 /*promo section*/
 #promociones{
     position:relative;
-    width: 1150px;
+    min-width: 350px;
     padding:20px;
     display: flex;
     justify-content: center;
@@ -195,16 +218,7 @@ nav{
 #promociones .card .contenido_card p{
     color: rgb(139, 139, 139);
 }
-#promociones .card .contenido_card a{
-    position: relative;
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #000;
-    color: #ffffff;
-    border-radius: 40px;
-    text-decoration: none;
-    margin-top: 20px;
-}
+
 #promociones .card:nth-child(1) .circulo_card,#promociones .card:nth-child(1) .contenido_card a{
     background: #A68C5B;
 }
@@ -213,6 +227,70 @@ nav{
 }
 #promociones .card:nth-child(3) .circulo_card,#promociones .card:nth-child(3) .contenido_card a{
     background: #400601;
+}
+/*armado de hamburguesa*/
+#armado{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #ffffff;
+    width: 60%;
+    height: 600px;
+    min-width: 350px;
+    border-radius: 20px;
+    overflow:hidden ;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+}
+#armado_img{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color:#0D0D0D ;
+    width: 55%;
+    height: 100%;
+    clip-path: ellipse(100% 100% at 0% 50%);
+}
+#armado_img img{
+    width:80%;
+}
+#ingredientes_img{
+    height: fit-content;
+    overflow: hidden;
+}
+#form_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 45%;
+    height: 100%;
+}
+#form_ingredientes{
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    overflow-y: hidden;
+    padding: auto;
+    justify-content: center;
+}
+.list_txt{
+    color: grey;
+    padding: 0px 5px;
+}
+.boton_armado{
+    color: grey;
+    padding: 5px;
+    margin: 5px;
+    background: none;
+    border: none;
+    border-radius: 100%;
+    cursor: pointer;
+    font-size: x-large;
+}
+.boton_armado:hover{
+    color: #0D0D0D;
 }
 /* footer */
 .footer{
@@ -296,7 +374,7 @@ nav{
         margin: auto;
         font-size: 16px;
     }
-    .button_pedidos{
+    .boton_pedidos{
         position: absolute;
         top: 35%;
         left:17%;
@@ -306,7 +384,16 @@ nav{
         top: 120px;
         width: 100%;
     }
-   
+    .titulos_txt{
+        text-overflow: clip;
+        text-align: center;
+        font-size: 200%;
+    }
+    .textos_txt{
+        font-size: 16px;
+        text-overflow: clip;
+        text-align: center;
+    }
     .footer{
         flex-direction: column;
     }

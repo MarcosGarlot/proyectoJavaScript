@@ -14,7 +14,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Neuton:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="assets/images/logo.png">
-
     <title>LA BURGUESA | Web</title>
 </head>
 <body>
@@ -23,10 +22,10 @@
             <button class="hamburger" id="hamburger">
                 <i class="fa fa-bars"></i>
             </button>
-            <ul class="nav_list nav_list_hide">
-                <li><a href="" class="activo">I N I C I O</a></li>
-                <li><a href="">P E D I D O S</a></li>
-                <li><a href="">P R O M O S</a></li>
+            <ul class="nav_list nav_list_hide textos_txt">
+                <li><a href="#" class="activo">I N I C I O</a></li>
+                <li><a href="#aqui_promo">P R O M O S</a></li>
+                <li><a href="#aqui_armado">P E D I D O S</a></li>
             </ul>
             <a href="index.html"><img src="assets/images/logo.png" alt="logo" class="logo"></a>
             <button class="cart" id="cart">
@@ -37,26 +36,45 @@
     <main>
         <section class="parallax">
             <div class="parallax_txt">
-                <h1> 
+                <h1 class="titulos_txt"> 
                     Pedi la mejor<br>
                     <span>HAMBURGUESA</span>
                 </h1>
-                <p>
+                <p class="textos_txt">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 </p>
-                <a href="" class="button_pedidos">Arma la tuya > </a>
+                <a href="#armado" class="boton_pedidos textos_txt">Arma la tuya > </a>
             </div>
             <img src="assets/images/staticParallax.png" alt="hamburguesa" class=parallax_image>
         </section>
         <section class="contenido">
+            <h2 class="titulos_txt secciones_txt " id="aqui_promo">PROMOCIONES</h2>
+            <P class="textos_txt">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</P>
             <div id="promociones" >
+            </div>
+            <h2 class="titulos_txt secciones_txt " id="aqui_armado">ARMA TU PROPIA HAMBURGUESA</h2>
+            <P class="textos_txt">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</P> 
+            <div id="armado">
+                <div id="armado_img">
+                    <img src="assets/images/mano_superior.png" alt="Pan">
+                    <div id="ingredientes_img">
+                    </div>
+                    <img src="assets/images/medallon_carne.png" alt="medallon">
+                    <img src="assets/images/mano_inferior.png" alt="Pan">
+                </div>
+                <div id="form_container">
+                    <form id="form_ingredientes">
+                    
+                    </form>
+                    <a href="#" class="boton_para_carrito" id="boton_para_carrito_armado">Agregar al carrito</a>
+                </div>
             </div>
         </section>
     </main>
     <footer>
         <div class="footer">
           <div class="footer__logo__datos">
-            <img src="../assets/images/logo.png"  height="60px" alt="logo">
+            <img src="assets/images/logo.png"  height="60px" alt="logo">
               <div class="info div__texto" style="text-align: left;">
                 <p>emailinventado@gmail.com</p>
                 <p>+54 (351) 15555555</p>
@@ -67,11 +85,11 @@
             <a href='https://www.linkedin.com/in/marcos-garlot-82633b1b5/' class="autor__link"><p class="div__texto">&copy; 2021  Marcos Garlot, autor </p></a>
           </div>
           <div class="footer__social__media">
-            <a href=""><img src="../assets/images/003-whatsapp.png" alt="whatsapp" class="footer__social__media__icon"></a>
-            <a href=""><img src="../assets/images/002-telegrama.png" alt="telegram" class="footer__social__media__icon"></a>
-            <a href=""><img src="../assets/images/001-instagram.png" alt="instagram" class="footer__social__media__icon"></a>
-            <a href=""><img src="../assets/images/005-facebook.png" alt="facebook" class="footer__social__media__icon"></a>
-            <a href=""><img src="../assets/images/006-youtube.png" alt="youtube" class="footer__social__media__icon"></a>
+            <a href=""><img src="assets/images/003-whatsapp.png" alt="whatsapp" class="footer__social__media__icon"></a>
+            <a href=""><img src="assets/images/002-telegrama.png" alt="telegram" class="footer__social__media__icon"></a>
+            <a href=""><img src="assets/images/001-instagram.png" alt="instagram" class="footer__social__media__icon"></a>
+            <a href=""><img src="assets/images/005-facebook.png" alt="facebook" class="footer__social__media__icon"></a>
+            <a href=""><img src="assets/images/006-youtube.png" alt="youtube" class="footer__social__media__icon"></a>
           </div>
         </div>
     </footer>
