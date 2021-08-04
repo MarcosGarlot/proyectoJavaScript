@@ -73,7 +73,7 @@ function agregar_imagen(){
     const ingredientes = document.getElementById("ingredientes_img");
     let div_ingredientes_img = document.createElement('div');
         div_ingredientes_img.innerHTML = 
-        `<img src="assets/images/${this.id}.png" alt="" id="${this.id}">`;
+        `<img src="assets/images/${this.id}.png" id="${this.id}_img">`;
         ingredientes.appendChild(div_ingredientes_img);
 }
 //Evento click en los botones más de la lista
@@ -84,9 +84,11 @@ for (const boton_mas of botones_agregado){
 
 //quita ingredientes por su Id
 function remover_imagen(){
-    precioBurgerArmada= resta(parseFloat(precioBurgerArmada),parseFloat(5));
-    const ingredientes_remocion = document.getElementById(this.id);
-    ingredientes_remocion.remove()
+    const ingredientes_remocion = document.getElementById(`${this.id}_img`);
+    if(ingredientes_remocion !== null){
+        precioBurgerArmada= resta(parseFloat(precioBurgerArmada),parseFloat(5));
+        ingredientes_remocion.remove(this.id)
+    }
 }
 //Evento click en los botones menos de la lista
 const botones_remoción =document.getElementsByClassName('boton_armado_removido');
