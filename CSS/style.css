@@ -35,11 +35,19 @@ body{
     color: #ffffff;
     border-radius: 40px;
     text-decoration: none;
-    transition: all 0.5s;
+    border: none;
+    transition: all 0.1s;
+    cursor: pointer;
+    margin: 15px 0;
 }
 .boton_para_carrito:hover{
     transform:scale(1.1);
     box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+}
+.boton_para_carrito:active {
+    filter:contrast(75%);
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }
 /* Navbar */
 .logo{
@@ -204,28 +212,25 @@ nav{
     padding: 30px 0;
 }
 #promociones .card .contenido_card{
-    position: absolute;
-    bottom: 10px;
-    padding-bottom: 20px;
+    position: relative;
+    top: -80%;
     text-align: center;
 }
 #promociones .card .contenido_card img{
     position: relative;
-    top: 30px;
-    left: 15px;
     width: 100%;
 }
 #promociones .card .contenido_card p{
     color: rgb(139, 139, 139);
 }
 
-#promociones .card:nth-child(1) .circulo_card,#promociones .card:nth-child(1) .contenido_card a{
+#promociones .card:nth-child(1) .circulo_card,#promociones .card:nth-child(1) .contenido_card input{
     background: #A68C5B;
 }
-#promociones .card:nth-child(2) .circulo_card,#promociones .card:nth-child(2) .contenido_card a{
+#promociones .card:nth-child(2) .circulo_card,#promociones .card:nth-child(2) .contenido_card input{
     background: #D9843B;
 }
-#promociones .card:nth-child(3) .circulo_card,#promociones .card:nth-child(3) .contenido_card a{
+#promociones .card:nth-child(3) .circulo_card,#promociones .card:nth-child(3) .contenido_card input{
     background: #400601;
 }
 /*armado de hamburguesa*/
@@ -300,6 +305,8 @@ nav{
     padding: 10px 10px;
     background-color: #fff;
     color: #000;
+    flex-wrap: wrap;
+    min-width: 350px;
 }
 .footer__logo__datos{
     display: flex; 
@@ -313,25 +320,17 @@ nav{
 .info p {
     margin: 0px;
 }
-.footer__autoria{
-    display: flex; 
-    flex-direction: column; 
-}
-.footer__autoria a p {
-    margin: 0px;
-}
 .footer__social__media{
     display: flex;
     justify-content: space-evenly;
-    
 }
 .footer__social__media__icon{
-    transition: all 0.5s;
     padding: 20px;
 }
 .autor__link{
     font-size: 20px;
     color:#000;
+    margin: 10px 0;
 }
 @media screen and (max-width:900px){
     /*NAV*/
@@ -395,12 +394,6 @@ nav{
         text-align: center;
     }
     .footer{
-        flex-direction: column;
-    }
-    .footer div{
-        margin: 10px;
-    }
-    .footer__social__media__icon{
-        padding: 0px 20px;
+        justify-content: center;
     }
 }
