@@ -69,6 +69,8 @@ function crear_objeto(){
     let cant = carrito.length
     var burger_armada = new Promo(cant+1," armada "," mediana ",precioBurgerArmada,"promo_demo");
     carrito.push (burger_armada)
+    localStorage.setItem("armada",JSON.stringify(armada));
+    localStorage.setItem("precio_armada",JSON.stringify(precioBurgerArmada));
     localStorage.setItem("carrito", JSON.stringify(carrito));
     render_carrito(carrito)
 }
