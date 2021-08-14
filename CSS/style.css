@@ -26,7 +26,7 @@ body{
     font-size: 21px;
     color: #ffffff;
 }
-.boton_para_carrito , .boton_para_carrito_armado{
+.botones{
     position: relative;
     display: inline-block;
     text-align: center;
@@ -40,11 +40,11 @@ body{
     cursor: pointer;
     margin: 15px 0;
 }
-.boton_para_carrito:hover , .boton_para_carrito_armado:hover{
+.botones:hover{
     transform:scale(1.1);
     box-shadow: 0 15px 25px rgba(0,0,0,0.2);
 }
-.boton_para_carrito:active , .boton_para_carrito_armado:active {
+.botones:active {
     filter:contrast(75%);
     box-shadow: 0 5px #666;
     transform: translateY(4px);
@@ -189,7 +189,7 @@ nav{
     transition: 0.5s;
 }
 #promociones:hover .card{
-    filter:blur(20px);
+    filter:blur(5px);
     transform:scale(0.9);
     opacity: 0.5;
 }
@@ -297,17 +297,14 @@ nav{
     color: #0D0D0D;
 }
 /*cart*/
-.content-section {
+.cart_container {
     background-color: #ffffff;
     margin-bottom: 10px;
-}
-.container {
     min-width: 350px;
     margin: 0px auto;
     padding: 20px 10px;
     background-color: #ffffff;
 }
-
 .cart-row {
     display: flex;
 }
@@ -348,6 +345,10 @@ nav{
 }
 .boton_x{
     color: #400601;
+}
+.boton_total{
+    display: flex;
+    justify-content: flex-end;
 }
 /* footer */
 .footer{

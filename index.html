@@ -47,7 +47,7 @@
             <div id="promociones" >
             </div>
             <h2 class="titulos_txt secciones_txt " id="aqui_armado">ARMA TU PROPIA HAMBURGUESA</h2>
-            <P class="textos_txt">CON INGREDIENTES DE PRIMERA CALIDAD</P> 
+            <P class="textos_txt">incluye papas y bebida medianos</P> 
             <div id="armado">
                 <div id="armado_img">
                     <img src="assets/images/mano_superior.png" alt="Pan">
@@ -60,11 +60,11 @@
                     <form id="form_ingredientes">
                     
                     </form>
-                    <input type="button"   class=" boton_para_carrito_armado" value="Agregar al carrito"></input>
+                    <input type="button"  class=" boton_para_carrito_armado botones" id="total_armado" value="Agregar al carrito"></input>
                 </div>
             </div>
         </section>
-        <section class="container content-section">
+        <section class="cart_container">
             <h2 class="titulos_txt secciones_txt" style="color: black; text-align: center;">CARRITO</h2>
             <div class="cart-row">
                 <span class="cart-item textos_txt cart-column">ITEM</span>
@@ -74,6 +74,9 @@
             </div>
             <div id="carrito_items">
 
+            </div>
+            <div class="boton_total">
+                <input type="button" id="total" value="Total a pagar : $0" class="botones"></input>
             </div>
         </section>
     </main>
