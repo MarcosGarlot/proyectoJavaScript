@@ -2,6 +2,8 @@
 let precioTotal = 0;
 let precioBurgerArmada=410;
 let cantidadArmada=0;
+const notificacion = document.getElementById("notificacion");
+const boton_cerrar = document.getElementById("cerrar");
 
 //Init arrays
 const ingredientes_list=[];
@@ -45,15 +47,19 @@ ingredientes_list.push(new Ingrediente ("007","Lechuga"));
 const suma=(a,b)=>a+b; 
 const resta=(a,b)=>a-b;
 
+
 //Renderisa la imagen del ingrediente
 function agregar_imagen(){
+    //Suma valor por cada ingrediente agregado
     precioBurgerArmada= suma(parseFloat(precioBurgerArmada),parseFloat(25));
+    precioBurgerArmada_en_boton_update();
     localStorage.setItem("precio_armada", JSON.stringify(precioBurgerArmada)); 
     const ingredientes = document.getElementById("ingredientes_img");
     armada.push(this.id);
     localStorage.setItem("armada", JSON.stringify(armada)); 
     let div_ingredientes_img = document.createElement('div');
-        div_ingredientes_img.innerHTML = 
+    //Renderiza la imagen de cada ingrediente
+    div_ingredientes_img.innerHTML = 
         `<img src="assets/images/${this.id}.png" id="${this.id}_img">`;
         ingredientes.appendChild(div_ingredientes_img);
 }
@@ -62,10 +68,13 @@ function agregar_imagen(){
 function remover_imagen(){
     const ingredientes_remocion = document.getElementById(`${this.id}_img`);
     if(ingredientes_remocion !== null){
+        //Resta valor por cada ingrediente removido
         precioBurgerArmada= resta(parseFloat(precioBurgerArmada),parseFloat(25));
+        precioBurgerArmada_en_boton_update();
         localStorage.setItem("precio_armada", JSON.stringify(precioBurgerArmada)); 
         ingredientes_remocion.remove(this.id)
     }
+    //Filtra el ingrediente y pisa el valor del array sin ese ingrediente
     armada = armada.filter(elemento => elemento !== this.id);
     localStorage.setItem("armada", JSON.stringify(armada));
 }
@@ -73,6 +82,7 @@ function remover_imagen(){
 //Crea un objeto de "promo armada" y lo renderiza en el carrito
 function crear_objeto_burgerArmada_a_carrito(){
     let cant = carrito.length
+    //crea un objeto Promo nuevo asignandole un id nuevo para cada uno
     var burger_armada = new Promo(cant+1," armada "," mediana ",precioBurgerArmada,"promo_demo");
     precioTotal= suma(parseFloat(precioTotal),parseFloat(precioBurgerArmada));
     localStorage.setItem("precio_total",JSON.stringify(precioTotal));
@@ -81,6 +91,10 @@ function crear_objeto_burgerArmada_a_carrito(){
     localStorage.setItem("precio_armada",JSON.stringify(precioBurgerArmada));
     localStorage.setItem("carrito", JSON.stringify(carrito));
     render_carrito(carrito);
+    //hace visible el div que notifica que se agrego al carrito el pedido
+    notificacion.classList.add("notificacion_show");
+    //luego de un tiempo esconde la notificación
+    setTimeout(function(){ notificacion.classList.remove("notificacion_show"); }, 2500);
 }
 
 //Agrega a carrito. Compara ID, si existe: suma cantidad. Si no existe: la agrega al array y manda a render 
@@ -98,6 +112,10 @@ function agregar_carrito(e){
     }
     localStorage.setItem("carrito", JSON.stringify(carrito));
     render_carrito(carrito);
+    //hace visible el div que notifica que se agrego al carrito el pedido
+    notificacion.classList.add("notificacion_show");
+    //luego de un tiempo esconde la notificación
+    setTimeout(function(){ notificacion.classList.remove("notificacion_show"); }, 2500);
 }
 
 //ELIMINA CANTIDADES O ELEMENTOS DEL ARRAY CARRITO
@@ -119,19 +137,20 @@ function remocion_cantidades_y_elementos_carrito(e){
     render_carrito(carrito);
 }
 
+// Cambia el value del boton a pagar mostrando el monto total en tiempo real
 function precioTotal_en_boton_update() {
     document.getElementById("total").value = "Total a pagar : $"+precioTotal;
+}
+// Cambia el value del boton para agregar a carrito, mostrando el monto total en tiempo real
+function precioBurgerArmada_en_boton_update() {
+    document.getElementById("total_armado").value = "Agregar al carrito : $"+precioBurgerArmada;
 }
 
 //Agrega al DOM las cards con las promos
 const promociones = document.getElementById("promociones");
 for (const promo of promos) {
     let divPromo = document.createElement('div');
-    
-    //ASIGNAMOS UNA CLASE AL DIV CREADO
     divPromo.classList.add("card");
-    
-    //DEFINIMOS LA ESTRUCTURA INTERNA DEL DIV
     divPromo.innerHTML = `<div class="circulo_card">
                                 <h3>${promo.id}</h3>
                             </div>
@@ -167,6 +186,7 @@ for (let index = 0; index < 7; index++) {
 if(localStorage.getItem('armada') !== null){
     armada = JSON.parse(localStorage.getItem('armada'));
     precioBurgerArmada= JSON.parse(localStorage.getItem('precio_armada'));
+    precioBurgerArmada_en_boton_update();
     const ingredientes = document.getElementById("ingredientes_img");
     for(let i = 0 ; i < armada.length ; i++){
         let div_ingredientes_img = document.createElement('div');
@@ -241,6 +261,7 @@ if(localStorage.getItem('carrito') !== null){
     const items_carrito = document.getElementById("carrito_items");
     for(let i = 0 ; i < carrito.length ; i++){
         let div_carrito_items = document.createElement('div');
+        div_carrito_items.classList.add("item_de_carrito");
         div_carrito_items.innerHTML = 
         `<div class="cart-row">
         <div class="cart-item cart-column">
@@ -267,3 +288,13 @@ if(localStorage.getItem('carrito') !== null){
 }else{
     carrito = [];
 }
+
+//Animación de carga de página
+window.addEventListener('load',()=>{
+    $(".loader-wrapper").fadeOut("slow");
+})
+
+//Cierra la notificación de "agregado al carrito"
+boton_cerrar.addEventListener("click", () => {
+    notificacion.classList.remove("notificacion_show");
+});
