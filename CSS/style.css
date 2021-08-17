@@ -40,33 +40,40 @@ animation: loader 2s infinite ease;
     100% { transform: scale(2);}
 }
 .notificacion{
-    display: none;
-}
-.notificacion_show{
     position: fixed;
     bottom: 1em;
     right: 1em;
+    padding: 15px;
     background-color: rgb(253, 243, 243);
     border-radius: 5px;
     overflow: hidden;
-    display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    animation: warning 400ms ease-in-out forwards;
+    animation: notifica 3000ms ease-in-out forwards;
     box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+    display: none;
 }
-@keyframes warning {
+@keyframes notifica {
     0% {
       opacity: 0;
       bottom: 1rem;
     }
-    5% {
-      opacity: 0;
+    25% {
+        opacity: 1;
+        bottom: 2rem;
+    }
+    50% {
+        opacity: 1;
+        bottom: 2rem;
+    }
+    75% {
+        opacity: 1;
+        bottom: 2rem;
     }
     100% {
-      opacity: 1;
-      bottom: 2rem;
+        opacity: 0;
+        bottom: 1rem;
     }
   }
 .carrito{

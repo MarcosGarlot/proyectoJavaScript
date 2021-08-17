@@ -2,8 +2,6 @@
 let precioTotal = 0;
 let precioBurgerArmada=410;
 let cantidadArmada=0;
-const notificacion = document.getElementById("notificacion");
-const boton_cerrar = document.getElementById("cerrar");
 
 //Init arrays
 const ingredientes_list=[];
@@ -83,7 +81,7 @@ function remover_imagen(){
 function crear_objeto_burgerArmada_a_carrito(){
     let cant = carrito.length
     //crea un objeto Promo nuevo asignandole un id nuevo para cada uno
-    var burger_armada = new Promo(cant+1," armada "," mediana ",precioBurgerArmada,"promo_demo");
+    var burger_armada = new Promo(cant+1," armada "," mediana ",precioBurgerArmada,"parallaxBurger");
     precioTotal= suma(parseFloat(precioTotal),parseFloat(precioBurgerArmada));
     localStorage.setItem("precio_total",JSON.stringify(precioTotal));
     carrito.push (burger_armada)
@@ -92,9 +90,9 @@ function crear_objeto_burgerArmada_a_carrito(){
     localStorage.setItem("carrito", JSON.stringify(carrito));
     render_carrito(carrito);
     //hace visible el div que notifica que se agrego al carrito el pedido
-    notificacion.classList.add("notificacion_show");
+    $(".notificacion").show();
     //luego de un tiempo esconde la notificación
-    setTimeout(function(){ notificacion.classList.remove("notificacion_show"); }, 2500);
+    setTimeout(function(){ $(".notificacion").hide(); }, 3000);
 }
 
 //Agrega a carrito. Compara ID, si existe: suma cantidad. Si no existe: la agrega al array y manda a render 
@@ -113,9 +111,9 @@ function agregar_carrito(e){
     localStorage.setItem("carrito", JSON.stringify(carrito));
     render_carrito(carrito);
     //hace visible el div que notifica que se agrego al carrito el pedido
-    notificacion.classList.add("notificacion_show");
+    $(".notificacion").show();
     //luego de un tiempo esconde la notificación
-    setTimeout(function(){ notificacion.classList.remove("notificacion_show"); }, 2500);
+    setTimeout(function(){ $(".notificacion").hide(); }, 4000);
 }
 
 //ELIMINA CANTIDADES O ELEMENTOS DEL ARRAY CARRITO
@@ -143,7 +141,7 @@ function precioTotal_en_boton_update() {
 }
 // Cambia el value del boton para agregar a carrito, mostrando el monto total en tiempo real
 function precioBurgerArmada_en_boton_update() {
-    document.getElementById("total_armado").value = "Agregar al carrito : $"+precioBurgerArmada;
+    document.getElementById("total_armado").value = "Agregar pedido : $"+precioBurgerArmada;
 }
 
 //Agrega al DOM las cards con las promos
@@ -293,8 +291,3 @@ if(localStorage.getItem('carrito') !== null){
 window.addEventListener('load',()=>{
     $(".loader-wrapper").fadeOut("slow");
 })
-
-//Cierra la notificación de "agregado al carrito"
-boton_cerrar.addEventListener("click", () => {
-    notificacion.classList.remove("notificacion_show");
-});
