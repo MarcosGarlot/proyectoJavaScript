@@ -37,7 +37,9 @@ animation: loader 2s infinite ease;
 }
 @keyframes loader {
     0% { transform: scale(1);}
-    100% { transform: scale(2);}
+    50% { transform: scale(2);}
+    100% { transform: scale(1);}
+
 }
 .notificacion{
     position: fixed;
@@ -245,7 +247,7 @@ nav{
 #promociones .card{
     position: relative;
     width: 300px;
-    height: 420px;
+    height: 470px;
     background-color: #ffffff;
     margin: 20px 30px;
     border-radius: 20px;
