@@ -36,9 +36,9 @@ ingredientes_list.push(new Ingrediente ("006"," Tomáte"));
 ingredientes_list.push(new Ingrediente ("007"," Lechuga"));
 
 //push de objetos promos al array 
-promos.push(new Promo(101,"Medallón de carne con"+ingredientes_list[4].nombre ,400,"promo_demo"));
-promos.push(new Promo(102,"Medallón de lentejas con"+ingredientes_list[2].nombre+","+ingredientes_list[5].nombre+" y"+ingredientes_list[6].nombre,500,"promo_demo"));
-promos.push(new Promo(103,"Triple medallón de carne con"+ingredientes_list[2].nombre+","+ingredientes_list[3].nombre+" y"+ingredientes_list[4].nombre,600,"promo_demo"));
+promos.push(new Promo(101,"Medallón de carne con queso cheddar" ,400,"promo_demo"));
+promos.push(new Promo(102,"Medallón de lentejas con cebolla morada, tomáte y lechuga",500,"promo_demo"));
+promos.push(new Promo(103,"Triple medallón de carne con cebolla morada, panceta y cheddar",600,"promo_demo"));
 
 //Funciones 
 const suma=(a,b)=>a+b; 
@@ -49,10 +49,10 @@ function agregar_imagen(){
     //Suma valor por cada ingrediente agregado
     precioBurgerArmada= suma(parseFloat(precioBurgerArmada),parseFloat(25));
     precioBurgerArmada_en_boton_update();
-    sessionStorage.setItem("precio_armada", JSON.stringify(precioBurgerArmada)); 
+    localStorage.setItem("precio_armada", JSON.stringify(precioBurgerArmada)); 
     const ingredientes = document.getElementById("ingredientes_img");
     armada.push(this.id);
-    sessionStorage.setItem("armada", JSON.stringify(armada)); 
+    localStorage.setItem("armada", JSON.stringify(armada)); 
     let div_ingredientes_img = document.createElement('div');
     //Renderiza la imagen de cada ingrediente
     div_ingredientes_img.innerHTML = 
@@ -67,12 +67,12 @@ function remover_imagen(){
         //Resta valor por cada ingrediente removido
         precioBurgerArmada= resta(parseFloat(precioBurgerArmada),parseFloat(25));
         precioBurgerArmada_en_boton_update();
-        sessionStorage.setItem("precio_armada", JSON.stringify(precioBurgerArmada)); 
+        localStorage.setItem("precio_armada", JSON.stringify(precioBurgerArmada)); 
         ingredientes_remocion.remove(this.id)
     }
     //Filtra el ingrediente y pisa el valor del array sin ese ingrediente
     armada = armada.filter(elemento => elemento !== this.id);
-    sessionStorage.setItem("armada", JSON.stringify(armada));
+    localStorage.setItem("armada", JSON.stringify(armada));
 }
 
 //Crea un objeto de "promo armada" y lo renderiza en el carrito
@@ -81,16 +81,16 @@ function crear_objeto_burgerArmada_a_carrito(){
     //crea un objeto Promo nuevo asignandole un id nuevo para cada uno
     var burger_armada = new Promo(cant+1,armada,precioBurgerArmada,"parallaxBurger");
     precioTotal= suma(parseFloat(precioTotal),parseFloat(precioBurgerArmada));
-    sessionStorage.setItem("precio_total",JSON.stringify(precioTotal));
+    localStorage.setItem("precio_total",JSON.stringify(precioTotal));
     carrito.push (burger_armada)
-    sessionStorage.setItem("armada",JSON.stringify(armada));
-    sessionStorage.setItem("precio_armada",JSON.stringify(precioBurgerArmada));
-    sessionStorage.setItem("carrito", JSON.stringify(carrito));
+    localStorage.setItem("armada",JSON.stringify(armada));
+    localStorage.setItem("precio_armada",JSON.stringify(precioBurgerArmada));
+    localStorage.setItem("carrito", JSON.stringify(carrito));
     render_carrito(carrito);
     //hace visible el div que notifica que se agrego al carrito el pedido
     $(".notificacion").show();
     //luego de un tiempo esconde la notificación
-    setTimeout(function(){ $(".notificacion").hide(); }, 3000);
+    setTimeout(function(){ $(".notificacion").hide(); }, 2500);
 }
 
 //Agrega a carrito. Compara ID, si existe: suma cantidad. Si no existe: la agrega al array y manda a render 
@@ -98,7 +98,7 @@ function agregar_carrito(e){
     const id_pedido = e.target.id;
     const seleccionado_precio = promos.find(p => p.id == id_pedido);
     precioTotal= suma(parseFloat(precioTotal),parseFloat(seleccionado_precio.precio));
-    sessionStorage.setItem("precio_total",JSON.stringify(precioTotal));
+    localStorage.setItem("precio_total",JSON.stringify(precioTotal));
     const seleccionado = carrito.find(p => p.id == id_pedido);
     if(seleccionado == undefined){
         carrito.push(promos.find(p => p.id == id_pedido))
@@ -106,12 +106,12 @@ function agregar_carrito(e){
     else{
         seleccionado.cantidad = suma(parseFloat(seleccionado.cantidad),parseFloat(1));
     }
-    sessionStorage.setItem("carrito", JSON.stringify(carrito));
+    localStorage.setItem("carrito", JSON.stringify(carrito));
     render_carrito(carrito);
     //hace visible el div que notifica que se agrego al carrito el pedido
     $(".notificacion").show();
     //luego de un tiempo esconde la notificación
-    setTimeout(function(){ $(".notificacion").hide(); }, 4000);
+    setTimeout(function(){ $(".notificacion").hide(); }, 2500);
 }
 
 //ELIMINA CANTIDADES O ELEMENTOS DEL ARRAY CARRITO
@@ -119,7 +119,7 @@ function remocion_cantidades_y_elementos_carrito(e){
     const id_pedido = e.target.id;
     const seleccionado_precio = carrito.find(p => p.id == id_pedido);
     precioTotal= resta(parseFloat(precioTotal),parseFloat(seleccionado_precio.precio));
-    sessionStorage.setItem("precio_total",JSON.stringify(precioTotal));
+    localStorage.setItem("precio_total",JSON.stringify(precioTotal));
     for( var i = 0; i < carrito.length; i++){ 
         if(carrito[i].id == e.target.id){
             if(carrito[i].cantidad > 1){
@@ -129,7 +129,7 @@ function remocion_cantidades_y_elementos_carrito(e){
             }
         }
     }
-    sessionStorage.setItem("carrito", JSON.stringify(carrito));
+    localStorage.setItem("carrito", JSON.stringify(carrito));
     render_carrito(carrito);
 }
 
@@ -178,9 +178,9 @@ for (let index = 0; index < 7; index++) {
 }
 
 //Local storage que guarda los ingredientes
-if(sessionStorage.getItem('armada') !== null){
-    armada = JSON.parse(sessionStorage.getItem('armada'));
-    precioBurgerArmada= JSON.parse(sessionStorage.getItem('precio_armada'));
+if(localStorage.getItem('armada') !== null){
+    armada = JSON.parse(localStorage.getItem('armada'));
+    precioBurgerArmada= JSON.parse(localStorage.getItem('precio_armada'));
     precioBurgerArmada_en_boton_update();
     const ingredientes = document.getElementById("ingredientes_img");
     for(let i = 0 ; i < armada.length ; i++){
@@ -249,10 +249,10 @@ for (const boton_para_carrito of botones_para_carrito){
     boton_para_carrito.addEventListener('click', agregar_carrito);
 }
 
-//sessionStorage del carrito
-if(sessionStorage.getItem('carrito') !== null){
-    carrito = JSON.parse(sessionStorage.getItem('carrito'));
-    precioTotal = JSON.parse(sessionStorage.getItem('precio_total'));
+//localStorage del carrito
+if(localStorage.getItem('carrito') !== null){
+    carrito = JSON.parse(localStorage.getItem('carrito'));
+    precioTotal = JSON.parse(localStorage.getItem('precio_total'));
     const items_carrito = document.getElementById("carrito_items");
     for(let i = 0 ; i < carrito.length ; i++){
         let div_carrito_items = document.createElement('div');

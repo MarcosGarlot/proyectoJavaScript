@@ -52,7 +52,7 @@ animation: loader 2s infinite ease;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    animation: notifica 3000ms ease-in-out forwards;
+    animation: notifica 2500ms ease-in-out forwards;
     box-shadow: 0 15px 25px rgba(0,0,0,0.2);
     display: none;
 }
