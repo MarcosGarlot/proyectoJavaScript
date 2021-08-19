@@ -1,6 +1,11 @@
+//Animación de carga de página
+window.addEventListener('load',()=>{
+    $(".loader-wrapper").fadeOut("slow");
+})
+
 //Parametros globales 
 let precioTotal = 0;
-let precioBurgerArmada=410;
+let precioBurgerArmada=450;
 let cantidadArmada=0;
 
 //Init arrays
@@ -11,10 +16,9 @@ let carrito=[];
 
 //objetos promo y burger
 class Promo{
-    constructor(id,hamburguesa, papas, precio, imagen, cantidad){
+    constructor(id,hamburguesa, precio, imagen, cantidad){
     this.id=id;
     this.hamburguesa=hamburguesa;    
-    this.papas=papas;
     this.precio=parseFloat(precio);
     this.imagen=imagen
     this.cantidad= cantidad||1;
@@ -28,23 +32,22 @@ function Ingrediente(id,nombre){
 }
 
 //push de objetos promos al array 
-promos.push(new Promo(101," simple "," mediana ",500,"promo_demo"));
-promos.push(new Promo(102," de lentejas "," mediana ",600,"promo_demo"));
-promos.push(new Promo(103," triple "," grande ",700,"promo_demo"));
+promos.push(new Promo(101," Medallón simple de carne con cheddar ",450,"promo_demo"));
+promos.push(new Promo(102," Medallón simple de lenteja con cebolla, lechuga y tomáte ",500,"promo_demo"));
+promos.push(new Promo(103," Triple medallón de carne con cebolla morada, panceta y cheddar ",600,"promo_demo"));
 
 //push de objetos ingrediente al array
-ingredientes_list.push(new Ingrediente ("001","Pepinos"));
-ingredientes_list.push(new Ingrediente ("002","Cebolla"));
-ingredientes_list.push(new Ingrediente ("003","Cebolla morada"));
-ingredientes_list.push(new Ingrediente ("004","Panceta"));
-ingredientes_list.push(new Ingrediente ("005","Cheddar"));
-ingredientes_list.push(new Ingrediente ("006","Tomáte"));
-ingredientes_list.push(new Ingrediente ("007","Lechuga"));
+ingredientes_list.push(new Ingrediente ("001"," Pepinos"));
+ingredientes_list.push(new Ingrediente ("002"," Cebolla"));
+ingredientes_list.push(new Ingrediente ("003"," Cebolla morada"));
+ingredientes_list.push(new Ingrediente ("004"," Panceta"));
+ingredientes_list.push(new Ingrediente ("005"," Cheddar"));
+ingredientes_list.push(new Ingrediente ("006"," Tomáte"));
+ingredientes_list.push(new Ingrediente ("007"," Lechuga"));
 
 //Funciones 
 const suma=(a,b)=>a+b; 
 const resta=(a,b)=>a-b;
-
 
 //Renderisa la imagen del ingrediente
 function agregar_imagen(){
@@ -81,7 +84,7 @@ function remover_imagen(){
 function crear_objeto_burgerArmada_a_carrito(){
     let cant = carrito.length
     //crea un objeto Promo nuevo asignandole un id nuevo para cada uno
-    var burger_armada = new Promo(cant+1," armada "," mediana ",precioBurgerArmada,"parallaxBurger");
+    var burger_armada = new Promo(cant+1, armada,precioBurgerArmada,"parallaxBurger");
     precioTotal= suma(parseFloat(precioTotal),parseFloat(precioBurgerArmada));
     localStorage.setItem("precio_total",JSON.stringify(precioTotal));
     carrito.push (burger_armada)
@@ -154,9 +157,8 @@ for (const promo of promos) {
                             </div>
                             <div class="contenido_card textos_txt">
                                 <img src="assets/images/${promo.imagen}.png" alt="promo hamburguesa">
-                                <p>Hamburguesa: ${promo.hamburguesa}</p>
-                                <p>Papas: ${promo.papas}</p>
-                                <p>Precio: $${promo.precio}</p>
+                                <p><span>Hamburguesa:</span> <br> ${promo.hamburguesa}</p>
+                                <p><span>Precio:</span> <br> $${promo.precio}</p>
                                 <p></p>
                                 <input type="button" id="${promo.id}"  class="boton_para_carrito botones" value="Agregar al carrito"></input>
                             </div>`;
@@ -286,8 +288,3 @@ if(localStorage.getItem('carrito') !== null){
 }else{
     carrito = [];
 }
-
-//Animación de carga de página
-window.addEventListener('load',()=>{
-    $(".loader-wrapper").fadeOut("slow");
-})
